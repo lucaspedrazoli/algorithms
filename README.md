@@ -28,5 +28,4 @@ func selectionSort(_ input: [Int]) -> [Int] {
     }
     return result
 }
-}
 ```
