@@ -3,7 +3,7 @@ Is about how the running time of an algorithm increases with the size of the inp
 It is a measure of the performances of the algorithm based on the input.
 
 ## Swift Stride
-Lets you move from one value to another using any increment and even lets you specify whether the upper bound is exclusive or inclusive.
+Lets you move from one value to another using any increment and even lets you specify whether the upper bound is exclusive or inclusive. <br>
 `stride(from:to:by:)` exclude upper bound
 ```
 for i in stride(from: 0, to: 10, by: 1) {
