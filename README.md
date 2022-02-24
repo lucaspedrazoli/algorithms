@@ -53,7 +53,17 @@ Is a sort algorithm that card players like to use to sort the cards they hold. I
 Using this algorithm you are looking at the next element, and you are trying to find a place for it by comparing it to the previous element, you will switch the two elements.
 ```
 func insertionSort<T: Comparable>(_ input: [T]) -> [T] {
-  var result = input
-  return result
+    var result = input
+    let length = result.count
+    for i in 1..<length {
+        for j in stride(from: i, to: 0, by: -1) {
+            if result[j] < result[j - 1] {
+                var temp = result[j - 1]
+                result[j - 1] = result[j]
+                result[j] = temp
+            }
+        }
+    }
+    return result
 }
 ```
