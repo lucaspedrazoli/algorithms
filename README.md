@@ -19,7 +19,8 @@ for i in stride(from: 0, through: 10, by: 1) {
 
 
 ## Buble Sort  / Time complexity: O(n²)
-Just educational. It is always slow. In the best or worst case.
+It is always slow. In the best or worst case. <br>
+It is the simplest one that repeatedly steps through the input list element by element, comparing the current element with the one after it.
 ```
 extension Array where Element: Comparable {
   func bubbleSort(by areInIncreasingOrder: ((Element, Element)) -
