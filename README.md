@@ -22,8 +22,18 @@ for i in stride(from: 0, through: 10, by: 1) {
 It is always slow. In the best or worst case. <br>
 It is the simplest one that repeatedly steps through the input list element by element, comparing the current element with the one after it.
 ```
-extension Array where Element: Comparable {
-  func bubbleSort(by areInIncreasingOrder: ((Element, Element)) -
+func bubbleSort(_ input: [Int]) -> [Int] {
+  var result = input
+  for i in (0..<result.count).reversed() {
+    for j in 0...i {
+      if array[i] > array[j] {
+        var temp = array[j]
+        array[j] = array[i]
+        array[i] = temp
+      }
+    }
+  }
+  return result
 }
 ```
 
