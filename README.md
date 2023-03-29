@@ -24,7 +24,7 @@ It is the simplest one that repeatedly steps through the input list element by e
 ```
 func bubbleSort(_ input: [Int]) -> [Int] {
   var result = input
-  for i in (0..<result.count).reversed() {
+  for i in (0..<result.count) {
     for j in 0...i {
       if array[i] < array[j] {
         var temp = array[j]
