@@ -74,3 +74,86 @@ func insertionSort<T: Comparable>(_ input: [T]) -> [T] {
     return result
 }
 ```
+## Missing sequence number
+```
+public func solution(_ A : inout [Int]) -> Int {
+    var missingNumber = A.first ?? 0
+    let newArray = Array(1...A.count + 1)
+    for i in newArray {
+        for element in A {
+            if i == element {
+                break
+            } else {
+                missingNumber = i
+            }
+        }
+    }
+    return missingNumber
+}
+
+```
+
+## Prefix Sum
+Given query values P, Q to create a range and find the lowest value.
+```
+public func solution(_ S : inout String, _ P : inout [Int], _ Q : inout [Int]) -> [Int] {
+     let stringArray = Array(S)
+    var genoms: [[Int]] = Array(repeating: Array(repeating: 0, count: S.count + 1), count: 3)
+    let hash: [String: Int] = [
+        "A": 1,
+        "C": 2,
+        "G": 3,
+        "T": 4
+    ]
+
+    for (index, element) in stringArray.enumerated() {
+        var a = 0
+        var c = 0
+        var g = 0
+        if element == "A" {
+            a = 1
+        }
+        if element == "C" {
+            c = 1
+        }
+        if element == "G" {
+            g = 1
+        }
+        genoms[0][index + 1] = genoms[0][index] + a
+        genoms[1][index + 1] = genoms[1][index] + c
+        genoms[2][index + 1] = genoms[2][index] + g
+    }
+         
+    var result: [Int] = []
+
+    for index in 0..<P.count {
+        let fromIndex = P[index]
+        let toIndex = Q[index]
+
+        if stringArray[fromIndex] == "A" {
+            result.append(1)
+            continue
+        } else if stringArray[toIndex] == "A" {
+            result.append(1)
+            continue
+        } else if toIndex == fromIndex {
+            let key = "\(stringArray[toIndex])"
+            let value = hash[key]
+            result.append(value!)
+            continue
+        }
+
+        if genoms[0][toIndex + 1] > genoms[0][fromIndex] {
+            result.append(1)
+        } else if genoms[1][toIndex + 1] > genoms[1][fromIndex] {
+            result.append(2)
+        } else if genoms[2][toIndex + 1] > genoms[2][fromIndex] {
+            result.append(3)
+        } else {
+            result.append(4)
+        }
+    }
+
+    return result
+}
+```
