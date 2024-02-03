@@ -157,3 +157,42 @@ public func solution(_ S : inout String, _ P : inout [Int], _ Q : inout [Int]) -
     return result
 }
 ```
+
+Find the lowest average between all values in Array
+```
+public func solution(_ A : inout [Int]) -> Int {
+    var newArray: [Double] = []
+    for index in 0..<A.count {
+        guard A.indices.contains(index + 1) else {
+            break
+        }
+        let next = Double(A[index + 1])
+        let current = Double(A[index])
+        var sum: Double = current + next
+        var divider: Double = 2
+        var average: Double = sum / divider
+        var averageRange: Double = 99999.00
+        for newIndex in index+2..<A.count {
+            sum += Double(A[newIndex])
+            divider += 1
+            averageRange = sum / divider
+            if averageRange < average {
+                average = averageRange
+            } else {
+                break
+            }
+        }
+        newArray.append(average)
+    }
+    var min: Double = 99999
+    var minIndex = 0
+    for (index, element) in newArray.enumerated() {
+        if Double(element) < min {
+            min = element
+            minIndex = index
+        }
+    }
+    
+    return minIndex
+}
+```
